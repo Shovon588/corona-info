@@ -1,0 +1,311 @@
+{% extends 'base.html' %}
+
+{%block title_block %}Home{% endblock %}
+
+{% block body_block %}
+
+<h2 class="text-center mt-5">Cases in last 24 hours: </h2>
+<h2 class="text-center text-primary">{{new_case}}</h2>
+<h2 class="text-center">Deaths in last 24 hours:</h2>
+<h2 class="text-center text-danger">{{new_death}}</h2>
+<h2 class="text-center">Recovery in last 24 hours:</h2>
+<h2 class="text-center text-success mb-5">{{new_recovery}}</h2>
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card my-5 mx-5 border-dark shadow-lg">
+      <h2 class="card-header text-center bg-primary">Total Cases</h2>
+      <div class="card-body">
+        <h3 class="card-title text-center">{{total_case}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card my-5 mx-5 border-dark shadow-lg">
+      <h2 class="card-header text-center bg-warning">Active Cases</h2>
+      <div class="card-body">
+        <h3 class="card-title text-center">{{active_case}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card my-5 mx-5 border-dark shadow-lg">
+      <h2 class="card-header text-center bg-danger">Total Death</h2>
+      <div class="card-body">
+        <h3 class="card-title text-center">{{total_death}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card my-5 mx-5 border-dark shadow-lg">
+      <h2 class="card-header text-center bg-success">Recovered</h2>
+      <div class="card-body">
+        <h3 class="card-title text-center">{{total_recovery}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="my-5 mx-auto">
+    <div style="display: flex;justify-content: center;align-items: center;">
+      <canvas id="cumCase" width="1000%" class="border border-dark p-4"></canvas>
+    </div>
+</div>
+
+<div class="my-5 mx-auto" >
+    <div style="display: flex;justify-content: center;align-items: center;">
+        <canvas id="newCases" width="1000%"  class="border border-dark p-4"></canvas>
+    </div>
+</div>
+
+<div class="my-5 mx-auto">
+    <div style="display: flex;justify-content: center;align-items: center;">
+      <canvas id="cumDeath-cumRecov" width="1000%" class="border border-dark p-4"></canvas>
+    </div>
+</div>
+
+  <div class="my-5 mx-auto">
+      <div style="display: flex;justify-content: center;align-items: center;">
+          <canvas id="newDeaths" width="1000%"  class="border border-dark p-4"></canvas>
+      </div>
+  </div>
+
+
+
+  <script>
+      $.ajax({
+          method:'GET',
+          url:'/data/',
+          success:function(data){
+              console.log(data);
+
+
+    // New cases
+    new Chart(document.getElementById("newCases"), {
+                  type: 'bar',
+                  data: {
+                      labels: data.date,
+                      datasets: [
+                          {
+                              label: "New cases:",
+                              backgroundColor: "#3cba9f",
+                              borderColor : "#3cba9f",
+                              data: data.case_info,
+                          },
+                      ]
+                  },
+                  options: {
+                      legend: {
+                          labels: {
+                              fontSize: 18
+                          }
+                      },
+                      title: {
+                          display : true,
+                          text : "Daily new cases",
+                          fontSize : 28.0
+                       },
+                      scales: {
+                          yAxes: [{
+                              ticks:{
+                                  beginAtZero: true,
+                                  fontSize:20.0,
+                              },
+                              scaleLabel: {
+                                  display: true,
+                                  labelString: 'No. of cases',
+                                  fontSize :22.0,
+                              }
+                          }],
+                          xAxes: [{
+                              ticks:{
+                                fontSize: 19.0,
+                              },
+                              scaleLabel: {
+                                  display: true,
+                                  labelString: 'Date',
+                                  fontSize : 22.0,
+                              }
+                          }]
+                        },
+                      responsive: false,
+                  }
+              });
+
+
+
+new Chart(document.getElementById("newDeaths"), {
+              type: 'bar',
+              data: {
+                  labels: data.date,
+                  datasets: [
+                      {
+                          label: "New death:",
+                          backgroundColor: "rgba(242, 12, 12, 0.7)",
+                          borderColor : "rgba(242, 12, 12, 1)",
+                          data: data.death_info,
+                      },
+                  ]
+              },
+              options: {
+                  legend: {
+                      labels: {
+                          fontSize: 18
+                      }
+                  },
+                  title: {
+                      display : true,
+                      text : "Daily new deaths",
+                      fontSize : 28.0
+                   },
+                  scales: {
+                      yAxes: [{
+                          ticks:{
+                              beginAtZero: true,
+                              fontSize:20.0,
+                          },
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'No. of death',
+                              fontSize :22.0,
+                          }
+                      }],
+                      xAxes: [{
+                          ticks:{
+                            fontSize: 19.0,
+                          },
+                          scaleLabel: {
+                              display: true,
+                              labelString: 'Date',
+                              fontSize : 22.0,
+                          }
+                      }]
+                    },
+                  responsive: false,
+              }
+          });
+
+
+
+          new Chart(document.getElementById("cumCase"), {
+            type: 'line',
+            data: {
+                datasets: [{
+                    label: 'Cases:',
+                    data: data.cum_case,
+                    borderColor: "#0000ff",
+                    fill: false,
+                }],
+                labels: data.date
+            },
+            options: {
+              legend: {
+                  labels: {
+                      fontSize: 18
+                  }
+              },
+              title: {
+                  display : true,
+                  text : "Date wise total cases",
+                  fontSize : 28.0
+               },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                          beginAtZero: true,
+                          fontSize:20.0
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Cases',
+                            fontSize :22.0,
+                        }
+                    }],
+                    xAxes: [{
+                        ticks:{
+                          fontSize: 19.0,
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Date',
+                            fontSize : 22.0,
+                        }
+                  }]
+                },
+                responsive: false
+            }
+          });
+
+
+  // Cumulative Death, Cumulative Recovery
+
+  new Chart(document.getElementById("cumDeath-cumRecov"), {
+  type: 'line',
+  data: {
+    labels: data.date,
+    datasets: [{
+        data: data.cum_death,
+        label: "Death",
+        borderColor: "#ff0000",
+        fill: false
+      }, {
+        data: data.cum_recov,
+        label: "Recovery",
+        borderColor: "#00ff00",
+        fill: false
+      },
+    ]
+  },
+  options: {
+    legend: {
+        labels: {
+            fontSize: 18
+        }
+    },
+    title: {
+      display : true,
+      text : "Death vs Recovery",
+      fontSize : 28.0
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+              beginAtZero: true,
+              fontSize:20.0
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Death - Recovery',
+                fontSize :22.0,
+            }
+        }],
+        xAxes: [{
+            ticks:{
+              fontSize: 19.0,
+            },
+            scaleLabel: {
+                display: true,
+                labelString: 'Date',
+                fontSize : 22.0,
+            }
+      }]
+    },
+    responsive:false
+  }
+});
+
+      },
+      error:function(data){
+          console.log('Error!');
+      }
+  });
+</script>
+
+{% endblock %}

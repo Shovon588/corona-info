@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block title_block%}District Info{% endblock %}
+
+{% block css_block %}
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+{% endblock %}
+
+{% block body_block %}
+
+<div class="container my-5 mx-auto">
+  <center>
+        <table id="districtTable" class="mdl-data-table" style="width:100%; ">
+            <thead>
+                <tr>
+                    <th>District</th>
+                    <th>Total Cases</th>
+                    <th>New Cases</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for district, total_cases, new_cases in data %}
+                <tr>
+                    <td>{{ district }}</td>
+                    <td>{{ total_cases }}</td>
+                    <td>{{ new_cases }}</td>
+                </tr>
+           {% endfor %}
+            </tbody>
+        </table>
+    </center>
+  </div>
+
+  <div class="my-5 mx-auto">
+      <div style="display: flex;justify-content: center;align-items: center;">
+        <canvas id="divisionInfo" width="1000%" class="border border-dark p-4"></canvas>
+      </div>
+  </div>
+
+
+
+<script>
+
+  $.ajax({
+      method:'GET',
+      url:'/district_data/',
+      success:function(data){
+          console.log(data);
+
+          new Chart(document.getElementById("divisionInfo"), {
+                        type: 'bar',
+                        data: {
+                            labels: data.div_name,
+                            datasets: [
+                                {
+                                    label: "New cases:",
+                                    backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#c22121","#cfb315", "#6ccf15", "#8515cf", "#de125d", "#556160"],
+                                    data: data.div_cases,
+                                },
+                            ]
+                        },
+                        options: {
+                            legend: {
+                              display:false,
+                                labels: {
+                                    fontSize: 18
+                                }
+                            },
+                            title: {
+                                display : true,
+                                text : "Case Distribution (Division)",
+                                fontSize : 28.0
+                             },
+                            scales: {
+                                yAxes: [{
+                                    ticks:{
+                                        beginAtZero: true,
+                                        fontSize:20.0,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'No. of cases',
+                                        fontSize :22.0,
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks:{
+                                      fontSize: 19.0,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Division',
+                                        fontSize : 22.0,
+                                    }
+                                }]
+                              },
+                            responsive: false,
+                        }
+                    });
+
+      },
+      error:function(data){
+          console.log('Error!');
+      }
+  });
+
+</script>
+
+{% endblock %}
+
+{% block js_block %}
+
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+
+<script>
+ $(function(){
+   $("#districtTable").dataTable();
+ })
+
+ </script>
+
+{% endblock %}
