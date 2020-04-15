@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08e52089-c591-4597-b7eb-51f3fa9ce3de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/checking purpose.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/temp.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +31,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="Git.Update.Project.Info.Tabs.Properties">
+    <option name="COLUMN_WIDTH">
+      <map>
+        <entry key="2" value="222" />
+        <entry key="3" value="221" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectId" id="1aXazwOw4wJwE0TS3s2vhzcPqWL" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,7 +48,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -87,14 +97,22 @@
     <option name="LAST_COMMIT_MESSAGE" value="Temp deleted" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="252" y="0" key="#HTML" timestamp="1586915196685">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="252" y="0" key="#HTML/0.0.1920.1080@0.0.1920.1080" timestamp="1586915196685" />
     <state x="375" y="0" key="CommitChangelistDialog2" timestamp="1586914474207">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="375" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1586914474207" />
-    <state x="129" y="0" key="SettingsEditor" timestamp="1586896980429">
+    <state x="609" y="63" key="RollbackChangesDialog" timestamp="1586915342309">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="129" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586896980429" />
+    <state x="609" y="63" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586915342309" />
+    <state x="129" y="0" key="SettingsEditor" timestamp="1586915228069">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="129" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586915228069" />
     <state x="252" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586914520183">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
