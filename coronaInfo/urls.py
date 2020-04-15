@@ -22,5 +22,6 @@ urlpatterns = [
     path('data/', views.get_data, name='data'),
     path('district/', views.district, name='district'),
     path('district_data/', views.get_district_data, name='district_data'),
+    path('map/', views.map_view, name='map'),
     path('admin/', admin.site.urls),
 ]

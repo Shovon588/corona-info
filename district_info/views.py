@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo
 import folium
+import  numpy as np
 
 # Create your views here.
 
@@ -75,27 +76,9 @@ def get_district_data(request):
         div_name.append(div.name)
         div_cases.append(div.cases)
 
-    dists = DistrictInfo.objects.all()
-    dist_name = []
-    dist_cases = []
-    new_cases = []
-    for dist in dists:
-        cases = CaseInfo.objects.filter(name=dist).order_by('-date')
-
-        if len(cases)==1:
-            new_cases.append(cases[0].cases)
-        else:
-            new_cases.append(cases[0].cases-cases[1].cases)
-
-        dist_name.append(dist.dist_name)
-        dist_cases.append(cases[0].cases)
-
     data = {
         'div_name': div_name,
         'div_cases': div_cases,
-        'dist_name': dist_name,
-        'dist_cases': dist_cases,
-        'new_cases': new_cases
     }
     print(data)
 
@@ -123,4 +106,28 @@ def district(request):
     return render(request, 'district.html', context={"data": data})
 
 
+def map_view(request):
+    districts = DistrictInfo.objects.all()
+    bd_lat = 23.6850
+    bd_lon = 90.3563
 
+    figure = folium.Figure()
+    m = folium.Map(location=[bd_lat, bd_lon], zoom_start=8)
+    m.add_to(figure)
+
+    for dist in districts:
+        info = CaseInfo.objects.filter(name=dist).order_by('-cases')
+        folium.vector_layers.CircleMarker(
+            location=[dist.lat, dist.lon],
+            radius=np.log(info[0].cases * 300),  # define how big you want the circle markers to be
+            color=None,
+            fill=True,
+            popup=dist.dist_name + ": " + str(info[0].cases),
+            tooltip=dist.dist_name + ": " + str(info[0].cases),
+            fill_color='red',
+            fill_opacity=0.7
+        ).add_to(m)
+    
+    figure.render()
+    
+    return render(request, 'map.html', {'map': figure})
