@@ -14,7 +14,7 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="card my-5 mx-5 border-dark shadow-lg">
+    <div class="card my-5 mx-auto border-dark shadow-lg">
       <h2 class="card-header text-center bg-primary">Total Cases</h2>
       <div class="card-body">
         <h3 class="card-title text-center">{{total_case}}</h3>
@@ -23,7 +23,7 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="card my-5 mx-5 border-dark shadow-lg">
+    <div class="card my-5 mx-auto border-dark shadow-lg">
       <h2 class="card-header text-center bg-warning">Active Cases</h2>
       <div class="card-body">
         <h3 class="card-title text-center">{{active_case}}</h3>
@@ -35,7 +35,7 @@
 
 <div class="row">
   <div class="col-sm-6">
-    <div class="card my-5 mx-5 border-dark shadow-lg">
+    <div class="card my-5 mx-auto border-dark shadow-lg">
       <h2 class="card-header text-center bg-danger">Total Death</h2>
       <div class="card-body">
         <h3 class="card-title text-center">{{total_death}}</h3>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="col-sm-6">
-    <div class="card my-5 mx-5 border-dark shadow-lg">
+    <div class="card my-5 mx-auto border-dark shadow-lg">
       <h2 class="card-header text-center bg-success">Recovered</h2>
       <div class="card-body">
         <h3 class="card-title text-center">{{total_recovery}}</h3>
@@ -53,31 +53,30 @@
   </div>
 </div>
 
-<div class="my-5 mx-auto">
-    <div style="display: flex;justify-content: center;align-items: center;">
+
+<div class="my-5 ml-4" >
+    <div style="display: flex">
       <canvas id="cumCase" width="1000%" class="border border-dark p-4"></canvas>
     </div>
 </div>
 
-<div class="my-5 mx-auto" >
-    <div style="display: flex;justify-content: center;align-items: center;">
+<div class="my-5 ml-4" >
+    <div style="display: flex">
         <canvas id="newCases" width="1000%"  class="border border-dark p-4"></canvas>
     </div>
 </div>
 
-<div class="my-5 mx-auto">
-    <div style="display: flex;justify-content: center;align-items: center;">
+<div class="my-5 ml-4">
+    <div style="display: flex">
       <canvas id="cumDeath-cumRecov" width="1000%" class="border border-dark p-4"></canvas>
     </div>
 </div>
 
-  <div class="my-5 mx-auto">
-      <div style="display: flex;justify-content: center;align-items: center;">
-          <canvas id="newDeaths" width="1000%"  class="border border-dark p-4"></canvas>
-      </div>
-  </div>
-
-
+<div class="my-5 ml-4">
+    <div style="display: flex">
+        <canvas id="newDeaths" width="1000%"  class="border border-dark p-4"></canvas>
+    </div>
+</div>
 
   <script>
       $.ajax({

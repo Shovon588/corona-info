@@ -80,7 +80,6 @@ def get_district_data(request):
         'div_name': div_name,
         'div_cases': div_cases,
     }
-    print(data)
 
     return JsonResponse(data=data)
 
