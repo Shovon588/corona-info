@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo
+from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCounter
 
 
 class CaseAdmin(admin.ModelAdmin):
@@ -25,3 +25,4 @@ admin.site.register(DistrictInfo, DistrictAdmin)
 admin.site.register(CaseInfo, CaseAdmin)
 admin.site.register(TotalInfo, TotalAdmin)
 admin.site.register(DivisionInfo, DivisionAdmin)
+admin.site.register(WebHitCounter)

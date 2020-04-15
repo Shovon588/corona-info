@@ -38,3 +38,11 @@ class DivisionInfo(models.Model):
 
     def __str__(self):
         return "%d cases in %s" %(self.cases, self.name)
+
+
+class WebHitCounter(models.Model):
+    date = models.DateTimeField(default=datetime.datetime.now())
+    counter = models.PositiveIntegerField()
+
+    def __str__(self):
+        return "Date: {}, Hit: {}" .format(self.date.date(), self.counter)

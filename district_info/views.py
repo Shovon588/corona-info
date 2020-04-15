@@ -1,8 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo
+from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCounter
 import folium
 import  numpy as np
+import warnings
+
+warnings.filterwarnings('ignore')
 
 # Create your views here.
 
@@ -60,6 +63,11 @@ def index(request):
     new_recovery = recovery_info[-1]
 
     active_case = total_case-total_death-total_recovery
+
+    webhit = WebHitCounter.objects.all().order_by('-counter')[0]
+    count=webhit.counter+1
+    new_count = WebHitCounter(counter=count)
+    new_count.save()
 
     context = {'new_case': new_case, 'new_death': new_death, 'new_recovery': new_recovery,
                'total_case': total_case, 'total_death': total_death,
@@ -130,3 +138,10 @@ def map_view(request):
     figure.render()
     
     return render(request, 'map.html', {'map': figure})
+
+
+def web_hit(request):
+    hit_counter = WebHitCounter.objects.all().order_by("-counter")[0]
+    counter = hit_counter.counter
+
+    return render(request, 'web_hit_counter.html', context={'counter': counter})
