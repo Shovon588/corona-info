@@ -5,7 +5,7 @@ import datetime
 
 
 class DistrictInfo(models.Model):
-    dist_name = models.CharField(max_length=50)
+    dist_name = models.CharField(max_length=50, unique=True)
     lat = models.DecimalField(max_digits=6, decimal_places=4)
     lon = models.DecimalField(max_digits=6, decimal_places=4)
 
