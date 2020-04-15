@@ -2,6 +2,15 @@
 
 {%block title_block %}Home{% endblock %}
 
+{% block alert_block %}
+  <div class="alert alert-secondary alert-dismissible fade show text-center" role="alert">
+    <a href="https://github.com/Shovon588/corona-info" class="badge badge-secondary" style="font-size:15px">Click here!</a>  If you want to contribute to this project.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{% endblock %}
+
 {% block body_block %}
 
 <h2 class="text-center mt-5">Cases in last 24 hours: </h2>
@@ -77,6 +86,8 @@
         <canvas id="newDeaths" width="1000%"  class="border border-dark p-4"></canvas>
     </div>
 </div>
+
+
 
   <script>
       $.ajax({
