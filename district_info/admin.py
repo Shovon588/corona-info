@@ -4,7 +4,7 @@ from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCount
 
 class CaseAdmin(admin.ModelAdmin):
     list_display = ['date', 'name', 'cases']
-    list_filter = ['date', 'name']
+    list_filter = ['date']
 
 
 class TotalAdmin(admin.ModelAdmin):
