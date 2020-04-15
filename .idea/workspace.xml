@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="08e52089-c591-4597-b7eb-51f3fa9ce3de" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/temp.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/temp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +25,18 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="new_branch" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="Git.Update.Project.Info.Tabs.Properties">
+    <option name="COLUMN_WIDTH">
+      <map>
+        <entry key="2" value="222" />
+        <entry key="3" value="221" />
+      </map>
+    </option>
   </component>
   <component name="ProjectId" id="1aXazwOw4wJwE0TS3s2vhzcPqWL" />
   <component name="ProjectViewState">
@@ -38,7 +47,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -65,7 +74,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586914476126</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Removed unnecessary files">
+      <created>1586915508108</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586915508108</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -84,25 +100,46 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Checking purpose" />
     <MESSAGE value="Temp deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Temp deleted" />
+    <MESSAGE value="Removed unnecessary files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed unnecessary files" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="375" y="0" key="CommitChangelistDialog2" timestamp="1586914474207">
+    <state x="252" y="0" key="#HTML" timestamp="1586915196685">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="375" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1586914474207" />
-    <state x="129" y="0" key="SettingsEditor" timestamp="1586896980429">
+    <state x="252" y="0" key="#HTML/0.0.1920.1080@0.0.1920.1080" timestamp="1586915196685" />
+    <state x="375" y="0" key="CommitChangelistDialog2" timestamp="1586915506333">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="129" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586896980429" />
-    <state x="252" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586914520183">
+    <state x="375" y="0" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1586915506333" />
+    <state x="458" y="45" key="MultipleFileMergeDialog" timestamp="1586915686699">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="252" y="77" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1586914520183" />
+    <state x="458" y="45" key="MultipleFileMergeDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586915686699" />
+    <state x="609" y="63" key="RollbackChangesDialog" timestamp="1586915342309">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="609" y="63" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586915342309" />
+    <state x="129" y="0" key="SettingsEditor" timestamp="1586915228069">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="129" y="0" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1586915228069" />
+    <state x="252" y="77" key="Vcs.Push.Dialog.v2" timestamp="1586915518343">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="252" y="77" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1586915518343" />
     <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1586913750979">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="92" y="92" width="1736" height="896" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586913750979" />
+    <state x="634" y="394" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586915748540">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="634" y="394" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1080@0.0.1920.1080" timestamp="1586915748540" />
+    <state x="593" y="48" key="git4idea.branch.GitSmartOperationDialog" timestamp="1586915680558">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="593" y="48" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586915680558" />
     <state x="608" y="197" key="git4idea.merge.GitMergeDialog" timestamp="1586914410258">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
