@@ -1,4 +1,5 @@
 # Default ignored files
+/workspace.xml
 
 coronaenv/
 .idea\workspace.xml/
