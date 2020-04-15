@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCounter
+from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCounter, DivisionName
 
 
 class CaseAdmin(admin.ModelAdmin):
@@ -17,7 +17,7 @@ class DistrictAdmin(admin.ModelAdmin):
 
 
 class DivisionAdmin(admin.ModelAdmin):
-    list_display = ['name', 'cases']
+    list_display = ['name', 'date', 'cases']
 
 
 # Register your models here.
@@ -26,3 +26,4 @@ admin.site.register(CaseInfo, CaseAdmin)
 admin.site.register(TotalInfo, TotalAdmin)
 admin.site.register(DivisionInfo, DivisionAdmin)
 admin.site.register(WebHitCounter)
+admin.site.register(DivisionName)

@@ -21,7 +21,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('data/', views.get_data, name='data'),
     path('district/', views.district, name='district'),
-    path('district_data/', views.get_district_data, name='district_data'),
+    path('district_data/', views.get_division_data, name='district_data'),
     path('map/', views.map_view, name='map'),
     path('web_hit/', views.web_hit, name='web_hit'),
     path('admin/', admin.site.urls),

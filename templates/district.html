@@ -39,6 +39,13 @@
   </div>
 
 
+  <div class="my-5 ml-4">
+      <div style="display: flex">
+        <canvas id="divisionLineChart" width="1000%" class="border border-dark p-4"></canvas>
+      </div>
+  </div>
+
+
 
 <script>
 
@@ -56,7 +63,7 @@
                                 {
                                     label: "New cases:",
                                     backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#c22121","#cfb315", "#6ccf15", "#8515cf", "#de125d", "#556160"],
-                                    data: data.div_cases,
+                                    data: data.div_total_cases,
                                 },
                             ]
                         },
@@ -99,6 +106,69 @@
                         }
                     });
 
+
+                    // Division wise Line Chart
+
+                    new Chart(document.getElementById("divisionLineChart"), {
+                    type: 'line',
+                    data: {
+                      labels: data.div_all_dates[0],
+                      datasets: [{
+                          data: data.div_all_cases[0],
+                          label: data.div_all_names[0],
+                          borderColor: "#ff0000",
+                          fill: false
+                        }, {
+                          data: data.div_all_cases[1],
+                          label: data.div_all_names[1],
+                          borderColor: "#00ff00",
+                          fill: false
+                        },
+                        {
+                          data: data.div_all_cases[2],
+                          label: data.div_all_names[2],
+                          borderColor: "#0000ff",
+                          fill: false
+                        },
+                      ]
+                    },
+                    options: {
+                      legend: {
+                          labels: {
+                              fontSize: 18
+                          }
+                      },
+                      title: {
+                        display : true,
+                        text : "Confirmed cases comparison",
+                        fontSize : 28.0
+                      },
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                beginAtZero: true,
+                                fontSize:20.0
+                              },
+                              scaleLabel: {
+                                  display: true,
+                                  labelString: 'Confirmed cases',
+                                  fontSize :22.0,
+                              }
+                          }],
+                          xAxes: [{
+                              ticks:{
+                                fontSize: 19.0,
+                              },
+                              scaleLabel: {
+                                  display: true,
+                                  labelString: 'Date',
+                                  fontSize : 22.0,
+                              }
+                        }]
+                      },
+                      responsive:false
+                    }
+                  });
       },
       error:function(data){
           console.log('Error!');
