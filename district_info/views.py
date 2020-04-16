@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCounter
+from .models import DistrictInfo, CaseInfo, TotalInfo, DivisionInfo, WebHitCounter, DivisionName
 import folium
 import  numpy as np
 import warnings
@@ -76,17 +76,32 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-def get_district_data(request):
-    division = DivisionInfo.objects.all().order_by('-cases')
+def get_division_data(request):
+    division = DivisionName.objects.all()
     div_name = []
-    div_cases = []
-    for div in division:
+    div_total_cases = []
+    div_all_names = []
+    div_all_cases = [[] for i in range(len(division))]
+    div_all_dates = [[] for i in range(len(division))]
+    
+    for i,div in enumerate(division):
+        infos = DivisionInfo.objects.filter(name=div).order_by('-date')
         div_name.append(div.name)
-        div_cases.append(div.cases)
+        div_total_cases.append(infos[0].cases)
+
+    for i,div in enumerate(division):
+        infos = DivisionInfo.objects.filter(name=div).order_by('date')
+        div_all_names.append(div.name)
+        for info in infos:
+            div_all_cases[i].append(info.cases)
+            div_all_dates[i].append(info.date)
 
     data = {
         'div_name': div_name,
-        'div_cases': div_cases,
+        'div_total_cases': div_total_cases,
+        'div_all_names': div_all_names,
+        'div_all_cases': div_all_cases,
+        'div_all_dates': div_all_dates,
     }
 
     return JsonResponse(data=data)
@@ -129,7 +144,7 @@ def map_view(request):
             radius=np.log(info[0].cases * 300),  # define how big you want the circle markers to be
             color=None,
             fill=True,
-            popup=dist.dist_name + ": " + str(info[0].cases),
+            #popup=dist.dist_name + ": " + str(info[0].cases),
             tooltip=dist.dist_name + ": " + str(info[0].cases),
             fill_color='red',
             fill_opacity=0.7

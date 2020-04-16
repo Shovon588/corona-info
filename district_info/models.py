@@ -32,8 +32,16 @@ class TotalInfo(models.Model):
         return "Date: {}, Case: {}, Death: {}, Recovered: {}".format(self.date, self.new_case, self.new_death, self.new_recovery)
 
 
+class DivisionName(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class DivisionInfo(models.Model):
-    name = models.CharField(max_length=100)
+    name = models.ForeignKey(DivisionName, on_delete=models.CASCADE)
+    date = models.DateField(default=datetime.datetime.today())
     cases = models.PositiveIntegerField(default=0)
 
     def __str__(self):
