@@ -1,5 +1,6 @@
 
 coronaenv/
+.idea
 
 district_info/__pycache__/
 
