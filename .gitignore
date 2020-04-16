@@ -1,4 +1,7 @@
 
 coronaenv/
+.idea/
 
 district_info/__pycache__/
+
+*.pyc
