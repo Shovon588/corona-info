@@ -2,3 +2,6 @@
 coronaenv/
 
 district_info/__pycache__/
+
+*.pyc
+staticfiles
