@@ -1,8 +1,5 @@
 
 coronaenv/
-.idea
-
-district_info/__pycache__/
-
+.idea/
 *.pyc
-staticfiles
+district_info/__pycache__/
