@@ -1,0 +1,1 @@
+Coronainfobd is a website where you can see all the information about corona virus cases in Bangladesh. The information is provided with various chats and visualization technique. There is also a severity map where location based cases can be seen.
