@@ -55,6 +55,7 @@ def index(request):
         recovery_info.append(info.new_recovery)
 
     updated = date[-1]
+
     total_case = sum(case_info)
     total_death = sum(death_info)
     total_recovery = sum(recovery_info)
