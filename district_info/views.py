@@ -34,7 +34,7 @@ def get_data(request):
         'death_info': death_info,
         'cum_case': cumcase,
         'cum_death': cumdeath,
-        'cum_recov': cumrecov
+        'cum_recov': cumrecov,
     }
 
     return JsonResponse(data=data)
@@ -54,6 +54,8 @@ def index(request):
         death_info.append(info.new_death)
         recovery_info.append(info.new_recovery)
 
+    updated = date[-1]
+
     total_case = sum(case_info)
     total_death = sum(death_info)
     total_recovery = sum(recovery_info)
@@ -69,9 +71,10 @@ def index(request):
     new_count = WebHitCounter(counter=count)
     new_count.save()
 
-    context = {'new_case': new_case, 'new_death': new_death, 'new_recovery': new_recovery,
-               'total_case': total_case, 'total_death': total_death,
-               'total_recovery': total_recovery, 'active_case': active_case}
+    context = {'new_case': new_case, 'new_death': new_death,
+               'new_recovery': new_recovery, 'total_case': total_case,
+               'total_death': total_death, 'total_recovery': total_recovery,
+               'active_case': active_case, 'updated': updated}
 
     return render(request, 'index.html', context=context)
 
@@ -122,10 +125,11 @@ def district(request):
 
         dist_name.append(dist.dist_name)
         dist_cases.append(cases[0].cases)
-
     data = zip(dist_name, dist_cases, new_cases)
 
-    return render(request, 'district.html', context={"data": data})
+    updated = cases[0].date
+
+    return render(request, 'district.html', context={"data": data, 'updated': updated})
 
 
 def map_view(request):
@@ -138,7 +142,7 @@ def map_view(request):
     m.add_to(figure)
 
     for dist in districts:
-        info = CaseInfo.objects.filter(name=dist).order_by('-cases')
+        info = CaseInfo.objects.filter(name=dist).order_by('-date')
         folium.vector_layers.CircleMarker(
             location=[dist.lat, dist.lon],
             radius=np.log(info[0].cases * 300),  # define how big you want the circle markers to be
@@ -151,8 +155,9 @@ def map_view(request):
         ).add_to(m)
     
     figure.render()
+    updated = info[0].date
     
-    return render(request, 'map.html', {'map': figure})
+    return render(request, 'map.html', {'map': figure, 'updated': updated})
 
 
 def web_hit(request):
