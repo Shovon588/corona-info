@@ -2,6 +2,54 @@
 
 {%block title_block %}Home{% endblock %}
 
+{% block css_block %}
+
+.total-cases{
+  border: 2px solid #0275d8;
+  color: #0275d8;
+  border-radius: 20px;
+}
+
+.total-cases:hover {
+  background-color: #0275d8;
+  color: white;
+}
+
+.active-cases{
+  border: 2px solid #ffbe0a;
+  color: #ffbe0a;
+  border-radius: 20px;
+}
+
+.active-cases:hover {
+  background-color: #ffbe0a;
+  color: white;
+}
+
+.total-death{
+  border: 2px solid #d9534f;
+  color: #d9534f;
+  border-radius: 20px;
+}
+
+.total-death:hover {
+  background-color: #d9534f;
+  color: white;
+}
+
+.total-recovered{
+  border: 2px solid #5cb85c;
+  color: #5cb85c;
+  border-radius: 20px;
+}
+
+.total-recovered:hover {
+  background-color: #5cb85c;
+  color: white;
+}
+
+{% endblock %}
+
 
 {% block body_block %}
 
@@ -14,43 +62,35 @@
 
 
 <div class="row">
-  <div class="col-sm-6">
-    <div class="card my-5 mx-auto border-dark shadow-lg">
-      <h2 class="card-header text-center bg-primary">Total Cases</h2>
-      <div class="card-body">
+  <div class="col-sm-6 mt-5">
+      <div class="card-body total-cases">
+        <h2 class="text-center">Total Cases</h2>
         <h3 class="card-title text-center">{{total_case}}</h3>
       </div>
-    </div>
   </div>
 
-  <div class="col-sm-6">
-    <div class="card my-5 mx-auto border-dark shadow-lg">
-      <h2 class="card-header text-center bg-warning">Active Cases</h2>
-      <div class="card-body">
+  <div class="col-sm-6 mt-5">
+      <div class="card-body active-cases">
+        <h2 class="text-center">Active Cases</h2>
         <h3 class="card-title text-center">{{active_case}}</h3>
       </div>
-    </div>
   </div>
 </div>
 
 
 <div class="row">
-  <div class="col-sm-6">
-    <div class="card my-5 mx-auto border-dark shadow-lg">
-      <h2 class="card-header text-center bg-danger">Total Death</h2>
-      <div class="card-body">
+  <div class="col-sm-6 mt-5">
+      <div class="card-body total-death">
+        <h2 class="text-center">Total Death</h2>
         <h3 class="card-title text-center">{{total_death}}</h3>
       </div>
-    </div>
   </div>
 
-  <div class="col-sm-6">
-    <div class="card my-5 mx-auto border-dark shadow-lg">
-      <h2 class="card-header text-center bg-success">Recovered</h2>
-      <div class="card-body">
+  <div class="col-sm-6 mt-5">
+      <div class="card-body total-recovered">
+        <h2 class="text-center">Recovered</h2>
         <h3 class="card-title text-center">{{total_recovery}}</h3>
       </div>
-    </div>
   </div>
 </div>
 
