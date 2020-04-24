@@ -148,7 +148,6 @@ def map_view(request):
             radius=np.log(info[0].cases * 300),  # define how big you want the circle markers to be
             color=None,
             fill=True,
-            #popup=dist.dist_name + ": " + str(info[0].cases),
             tooltip=dist.dist_name + ": " + str(info[0].cases),
             fill_color='red',
             fill_opacity=0.7
