@@ -115,8 +115,12 @@ def district(request):
     dist_name = []
     dist_cases = []
     new_cases = []
+
+    updated = 0
     for dist in dists:
         cases = CaseInfo.objects.filter(name=dist).order_by('-date')
+        if updated==0:
+            updated=cases[0].date
 
         if len(cases) == 1:
             new_cases.append(cases[0].cases)
@@ -126,8 +130,6 @@ def district(request):
         dist_name.append(dist.dist_name)
         dist_cases.append(cases[0].cases)
     data = zip(dist_name, dist_cases, new_cases)
-
-    updated = cases[0].date
 
     return render(request, 'district.html', context={"data": data, 'updated': updated})
 
